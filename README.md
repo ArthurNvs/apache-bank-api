@@ -8,4 +8,5 @@ Main Spring Boot implementations in this project:
 * Validation;
 * Ordenation;
 * Pagination;
-* Cache;
+* Spring Security;
+* Cache.
