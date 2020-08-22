@@ -5,11 +5,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
@@ -34,14 +36,25 @@ public class Customer implements UserDetails {
 	@ManyToMany(fetch = FetchType.EAGER)
 	private List<UserProfile> profiles = new ArrayList<>();
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "account_id", referencedColumnName = "id")
 	private Account account;
 	
 	public Customer() {
-		
 	}
+	
+	public Customer(String firstName, String lastName, String idNumber, String address,
+			String occupation) {
 
-	public Customer(String firstName, String lastName, String idNumber, String address, String occupation, Account account) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.idNumber = idNumber;
+		this.address = address;
+		this.occupation = occupation;
+	}
+	
+	public Customer(String firstName, String lastName, String idNumber, String address,
+			String occupation , Account account) {
 
 		this.firstName = firstName;
 		this.lastName = lastName;

@@ -12,22 +12,21 @@ import br.com.theapache.apachebank.models.Customer;
 import br.com.theapache.apachebank.repository.UserProfileRepository;
 
 @Service
-public class AuthenticationService implements UserDetailsService{
+public class AuthenticationService implements UserDetailsService {
 
 	@Autowired
 	private UserProfileRepository userProfileRepository;
-	
+
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Optional<Customer> customer = userProfileRepository.findByIdNumber(username);
-		
+
 		if (customer.isPresent()) {
 			return customer.get();
-		} 
-		
+		}
+
 		throw new UsernameNotFoundException("Invalid data for username");
 	}
-
 }
 
 //This class receives all the authentication logic for Spring Security!

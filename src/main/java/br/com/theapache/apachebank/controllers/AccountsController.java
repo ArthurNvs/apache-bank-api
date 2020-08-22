@@ -34,6 +34,7 @@ public class AccountsController {
 	public void createAccount() {
 		//@TODO
 		//generate account with random number and 3 branch options
+		//Remember to get the account id and set it to the customer accountId
 		
 	}
 }

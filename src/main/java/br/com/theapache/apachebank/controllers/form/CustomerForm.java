@@ -2,14 +2,12 @@ package br.com.theapache.apachebank.controllers.form;
 
 
 
-import java.util.Optional;
-
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
+import org.springframework.lang.Nullable;
 
-import br.com.theapache.apachebank.models.Account;
 import br.com.theapache.apachebank.models.Customer;
 import br.com.theapache.apachebank.repository.AccountRepository;
 import br.com.theapache.apachebank.repository.CustomerRepository;
@@ -26,7 +24,7 @@ public class CustomerForm {
 	private String address;
 	@NotNull @NotEmpty
 	private String occupation;
-	@NotNull 
+	@Nullable
 	private Long accountId;
 
 	public String getFirstName() {
@@ -77,11 +75,12 @@ public class CustomerForm {
 		this.accountId = accountId;
 	}
 
-	public Customer convertToCustomer(AccountRepository accountRepository) {
-		Optional<Account> optionalAccount = accountRepository.findById(getAccountId());
-		Account account = optionalAccount.get();
-
-		return new Customer(firstName, lastName, idNumber, address, occupation, account);
+	public Customer convertToCustomer(AccountRepository accountRepository) {	
+		
+//		Optional<Account> optionalAccount = accountRepository.findById(getAccountId());
+//		Account account = optionalAccount.get();
+		
+		return new Customer(firstName, lastName, idNumber, address, occupation);
 	}
 
 	public Customer update(Long id, CustomerRepository customerRepository) {
