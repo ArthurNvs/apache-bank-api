@@ -9,5 +9,6 @@ Main Spring Boot implementations in this project:
 * Ordenation;
 * Pagination;
 * Spring Security;
+* Spring Boot Actuator;
 * Stateless Token authentication via JWT;
 * Cache.
