@@ -1,7 +1,6 @@
 package br.com.theapache.apachebank.config.security;
 
 import java.io.IOException;
-import java.util.Optional;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -62,3 +61,5 @@ public class AuthenticationViaTokenFilter extends OncePerRequestFilter {
 		return token.substring(7, token.length()); //7 here is the length of "Bearer ".
 	}
 }
+
+//Authentication here is Stateless so we don't use Sessions
